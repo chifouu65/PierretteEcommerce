@@ -1,83 +1,72 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-
-const data = [
-    {
-        id: 1,
-        name: 'Product 1',
-        category: 'Category 1',
-        price: 100
-    },
-    {
-        id: 2,
-        name: 'Product 2',
-        category: 'Category 2',
-        price: 200
-    },
-    {
-        id: 3,
-        name: 'Product 3',
-        category: 'Category 3',
-        price: 300
-    },
-    {
-        id: 4,
-        name: 'Product 4',
-        category: 'Category 4',
-        price: 400
-    },
-    {
-        id: 5,
-        name: 'Product 5',
-        category: 'Category 5',
-        price: 500
-    }
-]
+import axios from "axios";
+import Card from "../../components/Card/Card";
 
 function Products() {
 
     const [products, setProducts] = React.useState([])
-    const [loading, setLoading] = React.useState(true)
     const [error, setError] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
 
     React.useEffect(() => {
-        setLoading(true)
-        try {
-            setProducts(data)
-        } catch (e) {
-            setError(e)
-            setLoading(false)
-        } finally {
-            setLoading(false)
+        const fetchData
+            = async () => {
+            setLoading(true)
+            try {
+                setError(null)
+                const data = await axios.get(process.env.REACT_APP_API_URL + '/products?populate=*',
+                    {
+                        headers: {
+                            Authorization: `bearer ${process.env.REACT_APP_API_TOKEN}`
+                        }
+                    })
+                setProducts(data.data.data)
+            } catch (e) {
+                setError(e)
+            } finally {
+                setLoading(false)
+            }
         }
+        fetchData()
+            .catch(e => {
+                setError(e)
+            })
     }, [])
-
-    console.log(products)
 
     return (
         <div className={'container mx-auto'}>
-            <h1>Products</h1>
 
-            {error && <p>{error.message}</p>}
-            {loading ? <p>Loading...</p> :
+            {loading && <p className='
+            text-center text-2xl text-gray-500 font-semibold my-4
+            '>Loading...</p>}
+            {error && <p className='
+            text-center text-2xl text-red-500 font-semibold my-4
+            '>{error.message}</p>}
+
+            { loading || error ? null :
                 (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {products.map((product) => (
-                            <Link to={`/product/${product.id}`} key={product.id} className="bg-white rounded-lg shadow-lg
-                        p-4">
-                                <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-                                    {product.name}
-                                </h2>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    {product.category}
-                                </p>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    {product.price}
-                                </p>
-                            </Link>
-                        ))}
+                    <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-4'}>
+                        {products.map((product, index) => {
+                            return (
+                                <Card
+                                    key={index}
+                                    title={product.attributes.title}
+                                    desc={product.attributes.desc}
+                                    img={
+                                        "http://localhost:1337" + product.attributes?.img?.data?.attributes?.url
+                                    }
+                                    img2={
+                                        "http://localhost:1337" + product.attributes?.img2?.data?.attributes?.url
+                                    }
+                                    price={product.attributes.price}
+                                    isNew={product.attributes.isNew}
+                                />
+                            )
+                        })}
                     </div>
-                )}
+                )
+            }
         </div>
     )
 }
