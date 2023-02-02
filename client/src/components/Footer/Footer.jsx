@@ -21,7 +21,7 @@ function Footer () {
 
     return (
         <div className='
-            fixed bottom-0 flex justify-center w-full
+            relative bottom-0 flex justify-center w-full
         '>
             <footer
                 className="w-full p-4 bg-white shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">

@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import axios from "axios";
 import Card from "../../components/Card/Card";
+import Spinner from "../../components/Spinner/Spinner";
 
 function Products() {
 
@@ -35,11 +36,9 @@ function Products() {
     }, [])
 
     return (
-        <div className={'container mx-auto'}>
+        <div className={'\'h-full w-full min-h-screen min-w-screen container mx-auto'}>
 
-            {loading && <p className='
-            text-center text-2xl text-gray-500 font-semibold my-4
-            '>Loading...</p>}
+            {loading && <Spinner/>}
             {error && <p className='
             text-center text-2xl text-red-500 font-semibold my-4
             '>{error.message}</p>}
@@ -61,6 +60,7 @@ function Products() {
                                     }
                                     price={product.attributes.price}
                                     isNew={product.attributes.isNew}
+                                    id={product.attributes}
                                 />
                             )
                         })}

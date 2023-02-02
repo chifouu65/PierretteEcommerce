@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
 import './App.css';
+import About from "./pages/About/About";
 const Layout = () => {
     return (
         <>
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
                 element: <Product/>
             },
             {
+                path: '/about',
+                element: <About/>
+            },
+            {
                 path: '*',
                 element: <div>404</div>
             }
@@ -48,7 +53,7 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <div className='h-full w-full min-h-screen min-w-screen'>
+        <div>
         <br/><br/><br/>
             <RouterProvider router={router}/>
         </div>
