@@ -1,6 +1,5 @@
 import Card from "../Card/Card";
 import React from "react";
-import {data} from "autoprefixer";
 import Spinner from "../Spinner/Spinner";
 import useFetch from "../../hooks/useFectch";
 
@@ -16,6 +15,7 @@ function List({subCats, maxPrice, sort, catId}) {
         <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-4'}>
             {
                 loading ? <Spinner/> : data?.map((item) => (
+                    <>
                     <Card
                         key={item.id}
                         title={item.attributes.title}
@@ -30,8 +30,10 @@ function List({subCats, maxPrice, sort, catId}) {
                         isNew={item.attributes.isNew}
                         id={item.id}
                     />
+                    </>
                 ))
             }
+
         </div>
     )
 }

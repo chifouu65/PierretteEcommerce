@@ -32,17 +32,17 @@ function ImageSlider (
     return (
         <>
 
-            <div id="default-carousel" className="relative" data-carousel="static">
+            <div id="default-carousel"data-carousel="static">
                 <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
 
-                    <div className="absolute z-20 flex items-center justify-center w-full h-full transition-opacity duration-700 ease-in-out"
-                            data-carousel-item>
+                    <div className="absolute flex items-center justify-center w-full h-full transition-opacity duration-700 ease-in-out"
+                            >
                         <img
                             onClick={() => handleSlide(
                                 slides[currentSlide].id === slides.length - 1 ? 0 : slides[currentSlide].id + 1
                             )}
                             src={slides[currentSlide].img}
-                                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg max-h-lg transition-transform duration-700 ease-in-out transform hover:scale-110"
                                 alt="..."/>
                     </div>
                 </div>

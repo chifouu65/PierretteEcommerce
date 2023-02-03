@@ -1,17 +1,17 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import {useSelector} from "react-redux";
-import {removeItem} from "../../redux/cartReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {addToCart, removeItem, resetCart} from "../../redux/cartReducer";
 import React from "react";
 import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai";
 import {Link} from "react-router-dom";
 
 export default function Cart({open, setOpen }) {
     const products = useSelector(state => state.cart.products)
-    console.log(products)
     const [total, setTotal] = useState(0)
     const [totalQuantity, setTotalQuantity] = useState(0)
+    const dispatch = useDispatch()
 
     const calculateTotal = () => {
         let total = 0
@@ -23,6 +23,11 @@ export default function Cart({open, setOpen }) {
         setTotal(total)
         setTotalQuantity(totalQuantity)
     }
+
+    const handlePayment = () => {
+
+    }
+
     React.useEffect(() => {
         calculateTotal()
     }, [products])
@@ -98,27 +103,41 @@ export default function Cart({open, setOpen }) {
                                                                                         product.desc.length > 50 ? product.desc.slice(0, 50) + "..." : product.desc
                                                                                     }</p>
                                                                                 </div>
-                                                                                <p className="ml-4">{product.price}€</p>
+                                                                                <p className="ml-4">{
+                                                                                    product.price * product.quantity
+                                                                                }€</p>
                                                                             </div>
                                                                         </div>
-                                                                        <div className="flex flex-1 items-end justify-between text-sm">
+                                                                        <div className="flex flex-1 items-end justify-between text-sm items-center">
                                                                             <p className="text-gray-500">Quantity: {product.quantity}</p>
-                                                                            <span className="text-gray-500 flex flex-row items-center gap-2 text-lg">
-                                                                                <button>
+                                                                            <span className="text-gray-500 flex flex-row items-center gap-0.5 text-lg justify-center">
+                                                                                <button
+                                                                                    onClick={() => dispatch(removeItem({
+                                                                                        id: product.id,
+                                                                                        quantity: product.quantity
+                                                                                    }))}
+                                                                                >
                                                                                     <AiOutlineMinusCircle />
                                                                                 </button>
                                                                                 <br/>
-                                                                                <button>
+                                                                                <button onClick={() =>
+                                                                                    dispatch(addToCart({
+                                                                                        id: product.id,
+                                                                                        quantity: 1
+                                                                                    })
+                                                                                )
+                                                                                }>
                                                                                     <AiOutlinePlusCircle />
                                                                                 </button>
                                                                             </span>
                                                                             <div className="flex">
                                                                                 <button
-                                                                                    onClick={
-                                                                                        () => {
-                                                                                            removeItem(product.id)
-                                                                                        }
-                                                                                    }
+                                                                                    onClick={() => dispatch(
+                                                                                        resetCart({
+                                                                                            id: product.id,
+                                                                                            quantity: product.quantity
+                                                                                        })
+                                                                                    )}
                                                                                     type="button"
                                                                                     className="font-medium text-indigo-600 hover:text-indigo-500"
                                                                                 >
@@ -134,6 +153,11 @@ export default function Cart({open, setOpen }) {
                                                 </div>
                                             </div>
 
+                                            <div className="flex justify-between text-base font-medium text-gray-500 px-8 pb-2">
+                                                <p>Total Products</p>
+                                                <p>{totalQuantity}x</p>
+                                            </div>
+
                                             <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                                                 <div className="flex justify-between text-base font-medium text-gray-900">
                                                     <p>Subtotal</p>
@@ -141,12 +165,11 @@ export default function Cart({open, setOpen }) {
                                                 </div>
                                                 <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                                 <div className="mt-6">
-                                                    <a
-                                                        href="#"
+                                                    <button
                                                         className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                                                     >
                                                         Checkout
-                                                    </a>
+                                                    </button>
                                                 </div>
                                                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                                                     <p className={'flex flex-row items-center gap-2'}>

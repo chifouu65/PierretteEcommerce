@@ -15,7 +15,7 @@ function UserPopUp({toggleUserPopUp}) {
                 {/* Bg open Container */}
                 <div className='px-6 py-4 mt-8'>
                     {
-                        !user ?<>user</> : <Login/>
+                        user ?<>user</> : <Login/>
                     }
                 </div>
             </div>

@@ -14,14 +14,21 @@ export const cartSlice = createSlice({
             if (item) {
                 item.quantity += action.payload.quantity++
             } else {
-                state.products.push({...action.payload, quantity: 1})
+                state.products.push({...action.payload, quantity: action.payload.quantity})
             }
         },
         removeItem: (state, action) => {
-            state.products = state.products.filter(item => item.id !== action.payload.id)
+            const item = state.products.find(item => item.id === action.payload.id)
+
+            if (item.quantity > 1) {
+                item.quantity--
+            } else {
+                state.products = state.products.filter(item => item.id !== action.payload.id)
+            }
         },
         resetCart: (state) => {
-            state.cart = []
+            const newState = initialState
+            state.products = newState.products
         },
     }
 });
