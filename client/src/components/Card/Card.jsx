@@ -44,7 +44,7 @@ function Card({title, desc, img, img2, price, isNew, id}) {
                         {title}
                     </h5>
                     <p className="mt-2 text-gray-600 dark:text-gray-400">{
-                        desc.length > 100 ? desc.substring(0, 100) + '...' : desc
+                        desc.length > 100 ? desc.substring(0, 50) + '...' : desc
                     }</p>
                     <div className="flex items-center mt-2.5 mb-5">
 
@@ -64,7 +64,7 @@ function Card({title, desc, img, img2, price, isNew, id}) {
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                            ${price}
+                            {price}€
                         </span>
                         <button
                             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add

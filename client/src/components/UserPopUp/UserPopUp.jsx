@@ -1,7 +1,8 @@
 import Login from "../Login/Login";
+import Cart from "../Cart/Cart";
 
 function UserPopUp({toggleUserPopUp}) {
-
+    const user = false;
     const handleUserPopUp = () => {
         toggleUserPopUp()
     }
@@ -13,7 +14,9 @@ function UserPopUp({toggleUserPopUp}) {
                 <button onClick={handleUserPopUp} className='absolute top-0 right-0 m-4 lg:text-2xl text-1xl font-bold text-gray-700 dark:text-gray-300'>X</button>
                 {/* Bg open Container */}
                 <div className='px-6 py-4 mt-8'>
-                    <Login/>
+                    {
+                        !user ?<>user</> : <Login/>
+                    }
                 </div>
             </div>
             {/* Bg close */}

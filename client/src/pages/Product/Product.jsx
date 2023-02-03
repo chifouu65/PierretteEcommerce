@@ -4,31 +4,31 @@ import useFetch from "../../hooks/useFectch";
 import Spinner from "../../components/Spinner/Spinner";
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 import {AiOutlineMail, AiOutlineShoppingCart} from "react-icons/ai";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../redux/cartReducer";
 
 function Product() {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
-
+    const [quantity, setQuantity] = useState(1);
+    const dispatch = useDispatch();
     const id = useParams().id
-    const {
-        data,
-        loading,
-        error,
-    } = useFetch(
-        `/products/${id}?populate=*`
-    )
+    const {data, loading, error,} = useFetch(`/products/${id}?populate=*`)
 
     const product = data
 
+    const handleChangeQuantity = (e) => {
+        setQuantity(e.target.value)
+    }
+
     return (
         <>
-            <h1>Product</h1>
             {
                 loading ? <Spinner/> :
                     (
                         product ?
                             <>
-                                <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
+                                <div className="md:flex items-start justify-center pt-2 2xl:px-20 md:px-6 px-4">
                                     <div className="md:hidden">
                                         <ImageSlider img={
                                             "http://localhost:1337" + product.attributes?.img?.data?.attributes?.url
@@ -41,6 +41,7 @@ function Product() {
                                             <p className="text-sm leading-none text-gray-600">{
                                                 product.attributes?.type
                                             }</p>
+
                                             <h1
                                                 className="
                                                     lg:text-2xl
@@ -57,17 +58,21 @@ function Product() {
                                         </div>
                                         <div
                                             className="py-4 border-b border-gray-200 flex items-center justify-between">
-                                            <p className="text-base leading-4 text-gray-800">Size</p>
-                                            <div className="flex items-center justify-center">
-                                                <p className="text-sm leading-none text-gray-600 mr-3">38.2</p>
-                                                <svg className="cursor-pointer" width="6" height="10" viewBox="0 0 6 10"
-                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 1L5 5L1 9" stroke="#4B5563" strokeWidth="1.25"
-                                                          strokeLinecap="round" strokeLinejoin="round"/>
-                                                </svg>
+                                            <div>
+                                                <input type="number" min="1" max="10" value={quantity}
+                                                       onChange={handleChangeQuantity}
+                                                       className="w-16 text-center text-base leading-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"/>
                                             </div>
                                         </div>
                                         <button
+                                            onClick={() => dispatch(addToCart({
+                                                id: product.id,
+                                                title: product.attributes?.title,
+                                                desc: product.attributes?.desc,
+                                                price: product.attributes?.price,
+                                                img: product.attributes?.img?.data?.attributes?.url,
+                                                quantity: quantity
+                                            }))}
                                             className="
                                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800
                                                 text-base
@@ -82,8 +87,10 @@ function Product() {
                                                 hover:bg-gray-700
                                                 flex-col gap-2
                                             "
-                                                    >
-                                            <span className="mr-2 font-semibold flex flex-row gap-2">Add to cart <AiOutlineShoppingCart className="mr-2 "/></span>
+                                        >
+                                            <span
+                                                className="mr-2 font-semibold flex flex-row gap-2">Add to cart <AiOutlineShoppingCart
+                                                className="mr-2 "/></span>
 
                                             <span>{
                                                 product.attributes?.price
@@ -94,9 +101,6 @@ function Product() {
                                                 <span className="font-semibold">Description : <br/></span>
                                                 {product.attributes?.desc}
                                             </p>
-                                            <p className="text-base leading-4 mt-4 text-gray-600">Depth: 5.1 inches</p>
-                                            <p className="md:w-96 text-base leading-normal text-gray-600 mt-4">Composition:
-                                                100% calf leather, inside: 100% lamb leather</p>
                                         </div>
                                         <div>
                                             <div className="border-t border-b py-4 mt-7 border-gray-200">

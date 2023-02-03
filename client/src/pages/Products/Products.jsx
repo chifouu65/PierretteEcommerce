@@ -16,7 +16,7 @@ function Products() {
 
     const [isPage, setIsPage] = React.useState('');
     const [maxPrice, setMaxPrice] = React.useState(200);
-    const [sort] = React.useState('asc');
+    const [sort] = React.useState('desc');
     const [selectedSubCategory, setSelectedSubCategory] = React.useState(
         []
     );
@@ -84,11 +84,12 @@ function Products() {
                 </div>
             </div>
             <div className="right">
-                {loading ? <Spinner/> : <h1><br/>Products</h1>}
+                {loading ? <Spinner/> :
 
                 <div className="h-screen">
                     <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCategory}/>
                 </div>
+                }
             </div>
         </div>
     );

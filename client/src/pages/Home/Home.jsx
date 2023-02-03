@@ -2,7 +2,7 @@ import React from 'react';
 import Header from "../../components/Header/Header";
 import HomeContainer from "../../components/HomeContainer/HomeContainer";
 import FeatureProducts from "../../components/FeatureProducts/FeatureProducts";
-
+import Cart from "../../components/Cart/Cart";
 function Home() {
     return (
         <div className={'h-full w-full min-h-screen min-w-screen container mx-auto px-4 py-4'}>

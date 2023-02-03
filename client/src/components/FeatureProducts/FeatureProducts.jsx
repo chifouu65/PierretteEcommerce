@@ -9,8 +9,6 @@ function FeatureProducts({type}) {
         `/products?populate=*&[filters][type][$eq]=${type}`
     );
 
-    console.log(data)
-
     return (
         <div>
             {loading && <Spinner/>}

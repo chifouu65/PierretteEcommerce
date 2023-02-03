@@ -1,15 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import {AiOutlineShoppingCart} from "react-icons/ai";
 import UserPopUp from "../UserPopUp/UserPopUp";
-
+import Cart from "../Cart/Cart";
 function Navbar() {
 
     const [isOpen, setIsOpen] = React.useState(false)
     const [selected, setSelected] = React.useState(0)
 
     const toggle = () => {
-        setIsOpen(!isOpen)
+        if (isOpen) {
+            setIsOpen(false)
+        } else {
+            setIsOpen(true)
+        }
     }
 
     const NavigationLinks = [
@@ -33,12 +37,6 @@ function Navbar() {
             url: '/products/2',
             current: false
         },
-        {
-            name: 'Cart',
-            url: '/cart',
-            current: false,
-            icon: AiOutlineShoppingCart
-        }
     ]
 
     const selectStyle = 'flex flex-row justify-center items-center py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
@@ -53,8 +51,21 @@ function Navbar() {
         }
     }
 
+    const [open, setOpen] = useState(false)
+    const toggleCart = () => {
+        if (open) {
+            setOpen(false)
+        } else {
+            setOpen(true)
+            toggle()
+        }
+    }
+
     return (
         <>
+            <>
+                <Cart open={open} setOpen={toggleCart}/>
+            </>
             <>
                 {
                     isOpenUser && (
@@ -63,7 +74,7 @@ function Navbar() {
                 }
             </>
         <nav
-            className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 absolute w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+            className="z-50 bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 absolute w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
                 <Link to={'/'} className="flex items-center">
                         <h2 className="text-xl font-bold text-gray-800 dark:text-white">
@@ -112,6 +123,15 @@ function Navbar() {
                                 </li>
                             ))
                         }
+                        <li className="flex flex-row justify-center items-center py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                            <button
+                                onClick={() => {
+                                    toggleCart()
+                                    }
+                                } className="inline-block ml-2 flex flex-row items-center gap-2">
+                                <AiOutlineShoppingCart /> Cart
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
