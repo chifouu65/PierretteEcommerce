@@ -22,10 +22,11 @@ export default function Cart({open, setOpen}) {
         let totalAmount = 0;
         let totalProductCount = 0;
         products.forEach((product) => {
-            totalAmount += product.price * product.quantity;
-            totalProductCount += product.quantity;
+            totalAmount += product.price * product.quantity
+            totalProductCount += product.quantity
         });
-        setTotal(totalAmount);
+        const totalMax = totalAmount.toFixed(2);
+        setTotal(totalMax);
         setTotalQuantity(totalProductCount);
     };
 
@@ -37,7 +38,6 @@ export default function Cart({open, setOpen}) {
     const handlePayment = async () => {
         setLoading(true);
         dispatch(resetCart());
-        console.log(products);
         try {
             const stripe = await stripePromise;
             const res = await makeRequest.post('/orders', {
@@ -112,7 +112,7 @@ export default function Cart({open, setOpen}) {
 
                                                 <div className="mt-8">
                                                     <div className="flow-root">
-                                                        <ul role="list" className="-my-6 divide-y divide-gray-200">
+                                                        <ul className="-my-6 divide-y divide-gray-200">
                                                             {products.map((product) => (
                                                                 <li key={product.id} className="flex py-6">
                                                                     <div
@@ -139,7 +139,7 @@ export default function Cart({open, setOpen}) {
                                                                                     }</p>
                                                                                 </div>
                                                                                 <p className="ml-4">{
-                                                                                    product.price * product.quantity
+                                                                                    (product.price * product.quantity).toFixed(2)
                                                                                 }€</p>
                                                                             </div>
                                                                         </div>
@@ -187,7 +187,7 @@ export default function Cart({open, setOpen}) {
                                                 <div
                                                     className="flex justify-between text-base font-medium text-gray-900">
                                                     <p>Subtotal</p>
-                                                    <p>{total} €</p>
+                                                    <p>{total}€</p>
                                                 </div>
 
                                                 <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes

@@ -1,6 +1,6 @@
 import React from "react";
 
-function ShopPopUp({show, setShow, danger, text, btnoff}) {
+function ShopPopUp({show, danger, text, btnoff}) {
 
     return (
         show && (

@@ -20,6 +20,9 @@ function FeatureProducts({type}) {
                                 return (
                                     <Card
                                         key={index}
+                                        category={product.attributes?.sub_categories?.data?.map((item) => (
+                                            item?.attributes?.title
+                                        ))}
                                         title={product.attributes.title}
                                         desc={product.attributes.desc}
                                         img={

@@ -1,9 +1,9 @@
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import React, {useState} from "react";
 import useFetch from "../../hooks/useFectch";
 import Spinner from "../../components/Spinner/Spinner";
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
-import {AiOutlineMail, AiOutlineShoppingCart} from "react-icons/ai";
+import {AiOutlineShoppingCart} from "react-icons/ai";
 import {useDispatch} from "react-redux";
 import {addToCart} from "../../redux/cartReducer";
 import ShopPopUp from "../../components/ShopPopUp/ShopPopUp";
@@ -32,11 +32,10 @@ function Product() {
         if (validationAddToCart) {
             setTimeout(() => {
                 setValidationAddToCart(false)
-            }, 1000)
+            }, 2000)
         }
     })
 
-    console.log(product?.attributes.sub_categories?.data)
     return (
         <>
             {
@@ -44,8 +43,11 @@ function Product() {
                     <ShopPopUp
                         show={validationAddToCart}
                         danger={false}
-                        setShow={handleValidationAddToCart} btnoff={true}
-                        text={<><p className="text-2xl font-semibold">{product.attributes?.title} added to cart</p><span
+                        btnoff={true}
+                        text={<><p className="text-2xl font-semibold">"{product.attributes?.title}"
+                            <br/>
+                            a bien été ajouté au panier
+                        </p><span
                             className="text-xl">{quantity} x {
                             product.attributes?.price} €
                             </span><br/><span className="text-xl">Total: {product.attributes?.price * quantity} €</span></>}/>
@@ -100,7 +102,7 @@ function Product() {
                                             className="py-4 border-b border-gray-200 flex items-center justify-between">
                                             <div className="flex items-center">
                                                 <div className="flex flex-col gap-2">
-                                                    <span className="text-gray-600 text-sm">Quantity</span>
+                                                    <span className="text-gray-600 text-sm">Quantité</span>
                                                     <div
                                                         className="flex items-center gap-2 bg-gray-200 px-3 py-1 rounded-lg">
                                                         <button
@@ -144,22 +146,11 @@ function Product() {
                                             }
                                             }
                                             className="
-                                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800
-                                                text-base
-                                                flex
-                                                items-center
-                                                justify-center
-                                                leading-none
-                                                text-white
-                                                bg-gray-800
-                                                w-full
-                                                py-4
-                                                hover:bg-gray-700
-                                                flex-col gap-2
+                                                w-full flex items-center justify-between mt-7 bg-gray-800 text-white py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 hover:bg-gray-700
                                             "
                                         >
                                             <span
-                                                className="mr-2 font-semibold flex flex-row gap-2">Add to cart <AiOutlineShoppingCart
+                                                className="mr-2 font-semibold items-center flex flex-row gap-2">Ajouter au panier <AiOutlineShoppingCart
                                                 className="mr-2 "/></span>
 
                                             <span>{

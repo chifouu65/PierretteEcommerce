@@ -1,5 +1,4 @@
 import Login from "../Login/Login";
-import Cart from "../Cart/Cart";
 
 function UserPopUp({toggleUserPopUp}) {
     const user = false;
