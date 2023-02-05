@@ -44,7 +44,7 @@ function Card({title, desc, img, img2, price, isNew, id}) {
                         {title}
                     </h5>
                     <p className="mt-2 text-gray-600 dark:text-gray-400">{
-                        desc.length > 100 ? desc.substring(0, 50) + '...' : desc
+                        desc && desc.length > 100 ? desc.substring(0, 50) + '...' : desc
                     }</p>
                     <div className="flex items-center mt-2.5 mb-5">
 

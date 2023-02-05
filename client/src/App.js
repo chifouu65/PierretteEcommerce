@@ -11,6 +11,9 @@ import Footer from "./components/Footer/Footer";
 
 import './App.css';
 import About from "./pages/About/About";
+import Succes from "./pages/ValidationPayement/Succes";
+import Error from "./pages/ValidationPayement/Error";
+import ErrorPage from "./pages/Error/ErrorPage";
 const Layout = () => {
     return (
         <>
@@ -43,8 +46,16 @@ const router = createBrowserRouter([
                 element: <About/>
             },
             {
+                path: '/success=true',
+                element: <Succes/>
+            },
+            {
+                path: '/success=false',
+                element: <Error/>
+            },
+            {
                 path: '*',
-                element: <div>404</div>
+                element: <ErrorPage/>
             }
         ]
     },

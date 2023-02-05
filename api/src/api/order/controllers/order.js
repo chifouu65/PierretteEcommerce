@@ -4,11 +4,11 @@ const stripe = require("stripe")(process.env.STRIPE_KEY);
  * order controller
  */
 
-const { createCoreController } = require("@strapi/strapi").factories;
+const {createCoreController} = require("@strapi/strapi").factories;
 
-module.exports = createCoreController("api::order.order", ({ strapi }) => ({
+module.exports = createCoreController("api::order.order", ({strapi}) => ({
   async create(ctx) {
-    const { products } = ctx.request.body;
+    const {products} = ctx.request.body;
     try {
       const lineItems = await Promise.all(
         products.map(async (product) => {
@@ -18,7 +18,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
 
           return {
             price_data: {
-              currency: "usd",
+              currency: "eur",
               product_data: {
                 name: item.title,
               },
@@ -30,22 +30,24 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
       );
 
       const session = await stripe.checkout.sessions.create({
-        shipping_address_collection: {allowed_countries: ['US', 'CA']},
-        payment_method_types: ["card"],
+        shipping_address_collection: {allowed_countries: ['US', 'CA', 'FR', 'BE']},
+        payment_method_types: [
+          "card",
+        ],
         mode: "payment",
-        success_url: process.env.FRONTEND_URL+"?success=true",
-        cancel_url: process.env.FRONTEND_URL+"?success=false",
+        success_url: process.env.FRONTEND_URL + "/success=true",
+        cancel_url: process.env.FRONTEND_URL + "/success=false",
         line_items: lineItems,
       });
 
       await strapi
         .service("api::order.order")
-        .create({ data: {  products, stripeId: session.id } });
+        .create({data: {products, stripeId: session.id}});
 
-      return { stripeSession: session };
+      return {stripeSession: session};
     } catch (error) {
       ctx.response.status = 500;
-      return { error };
+      return {error};
     }
   },
 }));

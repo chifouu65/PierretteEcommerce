@@ -9,7 +9,6 @@ import {Link} from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import {loadStripe} from "@stripe/stripe-js";
 import {makeRequest} from "../../MakeReqest";
-import axios from "axios";
 
 export default function Cart({open, setOpen}) {
     const products = useSelector((state) => state.cart.products);
@@ -37,6 +36,8 @@ export default function Cart({open, setOpen}) {
 
     const handlePayment = async () => {
         setLoading(true);
+        dispatch(resetCart());
+        console.log(products);
         try {
             const stripe = await stripePromise;
             const res = await makeRequest.post('/orders', {
@@ -48,12 +49,12 @@ export default function Cart({open, setOpen}) {
             await stripe.redirectToCheckout({
                 sessionId: res.data.stripeSession.id,
             });
+
         } catch (error) {
             console.error(error);
             setError(error.message);
         } finally {
             setLoading(false);
-            dispatch(resetCart());
             setError(null);
         }
     };
@@ -134,7 +135,7 @@ export default function Cart({open, setOpen}) {
                                                                                         {product.title}
                                                                                     </h3>
                                                                                     <p className="mt-1 text-sm text-gray-500">{
-                                                                                        product.desc.length > 50 ? product.desc.slice(0, 50) + "..." : product.desc
+                                                                                        product.desc && product.desc.length > 50 ? product.desc.slice(0, 50) + "..." : product.desc
                                                                                     }</p>
                                                                                 </div>
                                                                                 <p className="ml-4">{

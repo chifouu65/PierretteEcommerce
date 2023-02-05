@@ -36,6 +36,7 @@ function Product() {
         }
     })
 
+    console.log(product?.attributes.sub_categories?.data)
     return (
         <>
             {
@@ -65,9 +66,21 @@ function Product() {
                                     </div>
                                     <div className="lg:ml-8 md:ml-6 md:mt-0 mt-6">
                                         <div className="border-b border-gray-200 pb-6">
-                                            <p className="text-sm leading-none text-gray-600">{
-                                                product.attributes?.type
-                                            }</p>
+                                            <ul className="text-sm leading-none text-gray-600 flex flex-row gap-2 align-items">
+                                                {
+                                                product?.attributes.sub_categories?.data?.map((sub_category, index) => {
+                                                    return (
+                                                        <li
+                                                            key={index}
+                                                            className="text-gray-600 hover:text-gray-800"
+                                                        >
+                                                            {sub_category.attributes?.title},
+                                                        </li>
+                                                    )
+                                                })
+
+                                            }
+                                            </ul>
 
                                             <h1
                                                 className="
