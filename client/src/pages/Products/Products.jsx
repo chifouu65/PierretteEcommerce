@@ -41,53 +41,54 @@ function Products() {
     }, [catId])
 
     return (
-        <div className="products container mx-auto">
+        <div className="products container mx-auto pt-4">
             <h1 className='text-center lg:text-3xl text-2xl font-semibold my-4'>{isPage}</h1>
-            <Link
-                className='text-center text-1xl lg:text-2xl text-blue-500 font-semibold my-4 px-4'
-                to={catId === 1 ? '/products/2' : '/products/1'}>
-                {catId === 1 ? '> Aller vers les produits Astrologie' : '> Aller vers les produits Pierrette'}
-            </Link>
 
-            <div className="left pt-4">
-                <div className="filterItem py-4 px-4">
-                    <ul className="items-center w-full text-sm font-medium text-gray-900 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white flex flex-wrap">
 
-                        {data?.map((item) => (
-                            <Category
-                                key={item.id}
-                                item={item}
-                                handleChange={handleChange}
-                            />
+            <div className="left pt-4 flex flex-col">
 
-                        ))}
-                    </ul>
-                </div>
-                <div className="filterItem pt-4 pb-4 max-w-lg">
-                    <div className="inputItem px-4 py-4">
-                        <label htmlFor="steps-range"
-                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            {`Price: ${maxPrice}€`}
-                        </label>
-                        <input
-                            id="steps-range"
-                            type="range"
-                            min={0}
-                            max={200}
-                            onChange={(e) => setMaxPrice(
-                                e.target.value
-                            )}
-                            value={maxPrice}
-                            step="1"
-                            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
-                    </div>
-                </div>
-                <div className="right">
-                    {loading ? <Spinner/> :
-
-                        <div className="h-screen">
-                            <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCategory}/>
+                    <div className=" flex flex-col container md:max-w-sm items-center justify-center pb-6">
+                        <div className="p-6 bg-gray-100 mx-4 rounded-lg">
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <Link to={catId === 1 ? '/products/2' : '/products/1'}>
+                                    {catId === 1 ? '> Aller vers les produits Astrologie' : '> Aller vers les produits Pierrette'}
+                                </Link>
+                            </button>
+                            <div className="filterItem py-4 px-4">
+                                <ul className="items-center w-full text-sm font-medium text-gray-900 flex flex-col">
+                                    {data?.map((item) => (
+                                        <Category
+                                            key={item.id}
+                                            item={item}
+                                            handleChange={handleChange}
+                                        />
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="filterItem max-w-lg">
+                                <div className="inputItem">
+                                    <label htmlFor="steps-range"
+                                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        {`Price: ${maxPrice}€`}
+                                    </label>
+                                    <input
+                                        id="steps-range"
+                                        type="range"
+                                        min={0}
+                                        max={200}
+                                        onChange={(e) => setMaxPrice(
+                                            e.target.value
+                                        )}
+                                        value={maxPrice}
+                                        step="1"
+                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                <div className="right min-h-max">
+                    {loading ? <Spinner/> :
+                        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCategory}/>
                     }
                 </div>
             </div>

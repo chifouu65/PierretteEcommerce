@@ -12,7 +12,7 @@ function Card({title, desc, img, img2, price, isNew, id, category}) {
 
         <article>
             <div
-                className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                className="w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow dark:bg-gray-800 dark:border-gray-700">
                 <div className="relative pb-48 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <img className="w-full h-full object-cover"

@@ -14,13 +14,15 @@ import About from "./pages/About/About";
 import Succes from "./pages/ValidationPayement/Succes";
 import Error from "./pages/ValidationPayement/Error";
 import ErrorPage from "./pages/Error/ErrorPage";
+import Contact from "./pages/Contact/Contact";
+
 const Layout = () => {
     return (
-        <>
+        <div className={'flex flex-col justify-between h-screen'}>
             <Navbar/>
             <Outlet/>
             <Footer/>
-        </>
+        </div>
     )
 }
 
@@ -40,6 +42,11 @@ const router = createBrowserRouter([
             {
                 path: '/product/:id',
                 element: <Product/>
+            },
+            {
+                path: '/contact',
+                element: <Contact/>,
+
             },
             {
                 path: '/about',
@@ -65,7 +72,6 @@ const router = createBrowserRouter([
 function App() {
     return (
         <div>
-        <br/><br/><br/>
             <RouterProvider router={router}/>
         </div>
     );

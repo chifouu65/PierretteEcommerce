@@ -61,9 +61,9 @@ function Product() {
                                 <div className="pt-2 2xl:px-20 px-6 py-6 flex flex-col items-center">
                                     <div className={'w-full h-full max-w-lg'}>
                                         <ImageSlider img={
-                                            "http://localhost:1337" + product.attributes?.img?.data?.attributes?.url
+                                            "http://31.220.61.192" + product.attributes?.img?.data?.attributes?.url
                                         } img2={
-                                            "http://localhost:1337" + product.attributes?.img2?.data?.attributes?.url
+                                            "http://31.220.61.192" + product.attributes?.img2?.data?.attributes?.url
                                         }/>
                                     </div>
                                     <div className="lg:ml-8 md:ml-6 md:mt-0 mt-6">

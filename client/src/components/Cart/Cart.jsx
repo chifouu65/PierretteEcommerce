@@ -119,7 +119,7 @@ export default function Cart({open, setOpen}) {
                                                                         className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                                         <img
                                                                             src={
-                                                                                "http://localhost:1337" + product.img
+                                                                                "http://31.220.61.192"  + product.img
                                                                             }
                                                                             alt={product.title}
                                                                             className="h-full w-full object-cover object-center"

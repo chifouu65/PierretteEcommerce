@@ -29,13 +29,13 @@ function Navbar() {
             current: false
         },
         {
-            name: 'Boutique Pierrette',
-            url: '/products/1',
+            name: 'Contact',
+            url: '/contact',
             current: false
         },
         {
-            name: 'Astrologie',
-            url: '/products/2',
+            name: 'Boutique',
+            url: '/products/1',
             current: false
         },
     ]
@@ -75,7 +75,7 @@ function Navbar() {
                 }
             </>
             <nav
-                className="z-50 bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+                className="z-50 bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
                     <Link to={'/'} className="flex items-center">
                         <h2 className="lg:hidden block text-base font-bold text-gray-800 dark:text-white">

@@ -32,34 +32,36 @@ function ImageSlider (
     return (
         <>
 
-            <div id="default-carousel"data-carousel="static">
-                <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+            <div id="default-carousel"data-carousel="static" className="">
+                <div className="flex flex-col items-center">
+                    <div className="relative overflow-hidden rounded-lg h-96 max-h-sm max-w-sm items-center flex justify-center w-full">
 
-                    <div className="absolute flex items-center justify-center w-full h-full transition-opacity duration-700 ease-in-out"
-                            >
-                        <img
-                            onClick={() => handleSlide(
-                                slides[currentSlide].id === slides.length - 1 ? 0 : slides[currentSlide].id + 1
-                            )}
-                            src={slides[currentSlide].img}
-                                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg max-h-lg transition-transform duration-700 ease-in-out transform hover:scale-110"
+                        <div className="absolute flex items-center justify-center w-full h-full transition-opacity duration-700 ease-in-out"
+                        >
+                            <img
+                                onClick={() => handleSlide(
+                                    slides[currentSlide].id === slides.length - 1 ? 0 : slides[currentSlide].id + 1
+                                )}
+                                src={slides[currentSlide].img}
+                                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg transition-transform duration-700 ease-in-out transform hover:scale-110"
                                 alt="..."/>
+                        </div>
                     </div>
-                </div>
-                <div className="flex items-center justify-center mt-4 space-x-4" data-carousel-nav>
-                    {
-                        slides.map((slide, index) => {
-                            return (
-                                <button key={index}
-                                        onClick={() => handleSlide(slide.id)}
-                                        className={
-                                            slide.selected ? 'w-2 h-2 bg-gray-900 rounded-full' : 'w-2 h-2 bg-gray-300 rounded-full'
-                                        }>
-                                </button>
+                    <div className="flex items-center justify-center mt-4 space-x-4" data-carousel-nav>
+                        {
+                            slides.map((slide, index) => {
+                                    return (
+                                        <button key={index}
+                                                onClick={() => handleSlide(slide.id)}
+                                                className={
+                                                    slide.selected ? 'w-2 h-2 bg-gray-900 rounded-full' : 'w-2 h-2 bg-gray-300 rounded-full'
+                                                }>
+                                        </button>
+                                    )
+                                }
                             )
                         }
-                        )
-                    }
+                    </div>
                 </div>
             </div>
 
