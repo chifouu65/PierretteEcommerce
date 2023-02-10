@@ -1,8 +1,11 @@
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
-
+import estellePhoto from "../../assets/photo_estelle.jpg";
+import productPhoto from "../../assets/product_photo.jpg";
+import {FaFacebook} from "react-icons/fa";
+import {MdGroups} from "react-icons/md";
 function About() {
     return (
-        <div className="container px-6 mx-auto">
+        <div className="container px-6 mx-auto mt-6 mb-4">
 
             <section className="ext-gray-800">
 
@@ -19,50 +22,114 @@ function About() {
                                 }
                             >
                                 <h3 className="text-2xl font-bold mb-3">
-                                    Lorem ipsum dolor
+                                    Qui suis-je ?
                                 </h3>
                                 <h5 className="text-lg text-blue-600 font-bold mb-6">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Estelle, j'ai 51 ans je suis astrologue humaniste et karmique
                                 </h5>
 
                                 <p className="font-bold mb-4">à propos de nous ...</p>
                                 <p className="text-gra-500 mb-6">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
-                                    autem numquam dolore molestias aperiam culpa alias veritatis
-                                    architecto eos, molestiae vitae ex eligendi libero eveniet
-                                    dolorem, doloremque rem aliquid perferendis.
+                                    Je m'appelle Estelle, j'ai 51 ans je suis astrologue humaniste
+                                    et karmique et passionnée par les bienfaits des huiles
+                                    essentielles et les pierres naturelles.<br/>
+                                    Après avoir été diagnostiquée allergique au paracétamol
+                                    il y a plus de 15 ans, j'ai commencé à explorer les
+                                    alternatives naturelles pour soigner et soulager les
+                                    bobos du quotidien.<br/>
+                                    C'est ainsi que sont nées mes Pierrette,
+                                    une synergie unique d'huiles végétales, d'huiles essentielles
+                                    et de pierres naturelles.
                                 </p>
 
                                 <p className="font-bold mb-4">
-                                    Notre mission est de vous aider à trouver le meilleur
-                                    produit pour la meilleure expérience.
+                                    Mon parcours en astrologie humaniste :
                                 </p>
                                 <p className="text-gra-500 mb-6">
-                                    Distinctio corporis, iure facere ducimus quos consectetur ipsa ut
-                                    magnam autem doloremque ex! Id, sequi. Voluptatum magnam sed fugit
-                                    iusto minus et suscipit? Minima sunt at nulla tenetur, numquam
-                                    unde quod modi magnam ab deserunt ipsam sint aliquid dolores
-                                    libero repellendus cupiditate mollitia quidem dolorem odit
+                                    J'ai été formée par Bernard Dubois, un grand
+                                    astrologue français, il y a maintenant plus de 12 ans
+                                    avec plus de 10 000 consultations à mon actif.
+                                    <br/>
+                                    Mon approche
+                                    de l'astrologie humaniste vous aide à comprendre et accepter
+                                    votre chemin de vie. Je vous propose différentes thématiques
+                                    pour vous libérer des blocages liés à vos mémoires
+                                    personnelles et familiales, souvent enfouies dans votre
+                                    inconscient.
                                 </p>
 
                                 <p className="font-bold mb-4">
-                                    Notre Histoire et notre vision
+                                    Pourquoi choisir Pierrette Essentielle ?
+                                </p>
+                                <p className="text-gra-500 mb-4">
+                                    En choisissant Pierrette Essentielle,
+                                    vous bénéficiez d'une expertise unique dans les domaines
+                                    du bien-être au naturel et de l'astrologie. Je suis à votre
+                                    disposition pour vous aider à trouver la solution la mieux
+                                    adaptée à vos besoins, que ce soit pour soulager vos bobos
+                                    du quotidien grâce à mes Pierrette et ou pour comprendre
+                                    votre chemin de vie grâce à mes consultations en astrologie
+                                    humaniste.
+                                </p>
+                                <p className="font-bold mb-4">
+                                    Conclusion :
                                 </p>
                                 <p className="text-gra-500">
-                                    Minima sunt at nulla tenetur, numquam unde quod modi magnam ab
-                                    deserunt ipsam sint aliquid dolores libero repellendus cupiditate
-                                    mollitia quidem dolorem.
+                                    En choisissant Pierrette Essentielle, vous faites le
+                                    choix de la qualité, de la compréhension de sois et de mon expertise.
+                                    Je suis là pour vous accompagner et vous aider à trouver
+                                    les solutions qui vous conviennent.
+                                    N'attendez plus pour découvrir tout ce que Pierrette
+                                    Essentielle peut vous apporter.
                                 </p>
+                                <div className="grow mt-4">
+                                    <p className="font-bold mb-1">
+                                        Mes réseaux sociaux
+                                    </p>
+                                    <div className="flex flex-col container items-center justify-center gap-4 mt-2">
+                                        <a target={'_blank'} href="https://www.facebook.com/groups/1389109751829133/?ref=share"
+                                           className="text-blue-500 mr-2 flex gap-2 items-center">
+                                            <span className="
+                                            font-bold text-blue-500 text-sm
+                                            ">
+                                                Group Facebook
+                                            </span>
+                                            <MdGroups/>
+                                        </a>
+                                        <a
+                                            target={'_blank'}
+                                            href="https://www.facebook.com/profile.php?id=100085492091403"
+                                            className="text-blue-500 mr-2 flex items-center gap-2">
+                                              <span className="
+                                            font-bold text-blue-500 text-sm
+                                            ">
+                                                Page Facebook
+                                            </span>
+                                            <FaFacebook/>
+                                        </a>
+                                        <a
+                                            target={'_blank'}
+                                            href="https://www.facebook.com/estelleastrotheme"
+                                            className="text-blue-500 mr-2 flex gap-2 items-center">
+                                              <span className="
+                                            font-bold text-blue-500 text-sm
+                                            ">
+                                                Page Astrologie
+                                            </span>
+                                            <FaFacebook/>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div className={"hidden lg:block"}>
                             <ImageSlider
                                 img={
-                                "https://images.unsplash.com/photo-1573575155376-b5010099301b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                                estellePhoto
                                 }
                                 img2={
-                                "https://images.unsplash.com/photo-1609357912334-e96886c0212b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                                productPhoto
                                 }
                                 />
                         </div>

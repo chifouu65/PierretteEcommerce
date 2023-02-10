@@ -8,17 +8,19 @@ function Home() {
         <div className={'container mx-auto px-4 '}>
             <Header/>
             <HomeContainer/>
-            {/*<FeatureProducts
-                type={'Select a type of product'}
-            />*/}
-            <h2 className={'text-2xl font-bold text-center my-4'}>
-                Cosmétic Products
-            </h2>
-            <FeatureProducts type={'cosmétic'}/>
-            <br/>
-            <h2 className={'text-2xl font-bold text-center my-4'}>
-                Bijoux Products</h2>
-            <FeatureProducts type={'bijoux'}/>
+            <div className={'py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6'}>
+                <h2 className={'text-2xl font-bold text-center my-4'}>
+                    Cosmétic Products
+                </h2>
+                <br/>
+                <FeatureProducts type={'cosmétic'}/>
+                <br/>
+                <h2 className={'text-2xl font-bold text-center my-4'}>
+                    Bijoux Products
+                </h2>
+                <br/>
+                <FeatureProducts type={'bijoux'}/>
+            </div>
         </div>
 )
 }

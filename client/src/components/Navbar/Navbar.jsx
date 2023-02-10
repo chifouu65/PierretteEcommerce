@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
 import UserPopUp from "../UserPopUp/UserPopUp";
 import Cart from "../Cart/Cart";
-
+import logo from '../../assets/logo.png'
 function Navbar() {
 
     const [isOpen, setIsOpen] = React.useState(false)
@@ -78,6 +78,11 @@ function Navbar() {
                 className="z-50 bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
                     <Link to={'/'} className="flex items-center">
+                        <img
+                            src={logo}
+                            alt="logo"
+                            className="w-10 h-10"
+                        />
                         <h2 className="lg:hidden block text-base font-bold text-gray-800 dark:text-white">
                             Pierrette
                         </h2>

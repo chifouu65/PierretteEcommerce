@@ -1,3 +1,4 @@
+import {FaFacebook} from "react-icons/fa";
 
 function Contact() {
     return (
@@ -116,7 +117,7 @@ function Contact() {
                                             Questions techniques
                                         </p>
                                         <p className="text-gray-500">es@pierrette-essentielle.com</p>
-                                        <p className="text-gray-500">+1 234-567-89</p>
+                                        <p className="text-gray-500">+33 7 50 34 94 97</p>
                                     </div>
                                 </div>
                             </div>
@@ -140,8 +141,9 @@ function Contact() {
                                             Questions à propos de votre commande
                                         </p>
                                         <p className="text-gray-500">es@pierrette-essentielle.com</p>
-                                        <p className="text-gray-500">+1 234-567-89</p>
+                                        <p className="text-gray-500">+33 7 50 34 94 97</p>
                                     </div>
+
                                 </div>
                             </div>
                             <div className="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">

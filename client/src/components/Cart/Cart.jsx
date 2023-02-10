@@ -31,7 +31,7 @@ export default function Cart({open, setOpen}) {
     };
 
     const stripePromise = loadStripe(
-        'pk_test_51MXTDiIgdGykefkYdhgtuXJMlVX8T73Ny4Pn7oxhlmQzeDEuFDBNkr5a5fK6rHXhHoBp6juaUrCEFKizrAr678dw00UXa5s1ZS'
+        'pk_live_51MXTDiIgdGykefkYvvoeoddWnAhwVSshBIW9XxrwSu6TwXBrYzwrNxorJ3x8cxQSgJZXTGrOTBvPEjKfacytDt2T00UICPbaoB'
     );
 
 
@@ -39,6 +39,7 @@ export default function Cart({open, setOpen}) {
         setLoading(true);
         dispatch(resetCart());
         try {
+            console.log(products);
             const stripe = await stripePromise;
             const res = await makeRequest.post('/orders', {
                 products: products.map((product) => ({
@@ -96,8 +97,7 @@ export default function Cart({open, setOpen}) {
                                         <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                             <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                                                 <div className="flex items-start justify-between">
-                                                    <Dialog.Title className="text-lg font-medium text-gray-900">Shopping
-                                                        cart</Dialog.Title>
+                                                    <Dialog.Title className="text-lg font-medium text-gray-900">Panier de produits</Dialog.Title>
                                                     <div className="ml-3 flex h-7 items-center">
                                                         <button
                                                             type="button"
@@ -145,7 +145,7 @@ export default function Cart({open, setOpen}) {
                                                                         </div>
                                                                         <div
                                                                             className="flex flex-1 items-end justify-between text-sm items-center">
-                                                                            <p className="text-gray-500">Quantity: {product.quantity}</p>
+                                                                            <p className="text-gray-500">Quantité: {product.quantity}</p>
                                                                             <span
                                                                                 className="text-gray-500 flex flex-row items-center gap-0.5 text-lg justify-center">
                                                                                 <button
@@ -179,26 +179,27 @@ export default function Cart({open, setOpen}) {
 
                                             <div
                                                 className="flex justify-between text-base font-medium text-gray-500 px-8 pb-2">
-                                                <p>Total Products</p>
+                                                <p>Total de produits</p>
                                                 <p>{totalQuantity}x</p>
                                             </div>
 
                                             <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                                                 <div
                                                     className="flex justify-between text-base font-medium text-gray-900">
-                                                    <p>Subtotal</p>
+                                                    <p>Prix Total</p>
                                                     <p>{total}€</p>
                                                 </div>
 
-                                                <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes
-                                                    calculated at checkout.</p>
+                                                <p className="mt-0.5 text-sm text-gray-500">
+                                                    Taxes et frais de livraison calculés lors du paiement.
+                                                    </p>
 
                                                 <div className="mt-6">
                                                     <button
                                                         onClick={() => dispatch(resetCart())}
                                                         className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
                                                     >
-                                                        Reset
+                                                        Vider le panier
                                                     </button>
                                                 </div>
                                                 <div className="mt-6">
@@ -223,7 +224,7 @@ export default function Cart({open, setOpen}) {
                                                               className="font-medium text-indigo-600 hover:text-indigo-500"
                                                               onClick={() => setOpen(false)}
                                                         >
-                                                            Continue Shopping
+                                                            Continuer vos achats
                                                             <span aria-hidden="true"> &rarr;</span>
                                                         </Link>
                                                     </p>
