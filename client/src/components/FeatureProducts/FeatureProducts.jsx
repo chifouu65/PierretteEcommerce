@@ -26,10 +26,10 @@ function FeatureProducts({type}) {
                                         title={product.attributes.title}
                                         desc={product.attributes.desc}
                                         img={
-                                            "http://31.220.61.192" + product.attributes?.img?.data?.attributes?.url
+                                            "https://api.pierrette-essentielle.com/" + product.attributes?.img?.data?.attributes?.url
                                         }
                                         img2={
-                                            "http://31.220.61.192" + product.attributes?.img2?.data?.attributes?.url
+                                            "https://api.pierrette-essentielle.com/" + product.attributes?.img2?.data?.attributes?.url
                                         }
                                         price={product.attributes.price}
                                         isNew={product.attributes.isNew}

@@ -61,9 +61,9 @@ function Product() {
                                 <div className="pt-2 2xl:px-20 px-6 py-6 flex flex-col items-center">
                                     <div className={'w-full h-full max-w-lg'}>
                                         <ImageSlider img={
-                                            "http://31.220.61.192" + product.attributes?.img?.data?.attributes?.url
+                                            "https://api.pierrette-essentielle.com/" + product.attributes?.img?.data?.attributes?.url
                                         } img2={
-                                            "http://31.220.61.192" + product.attributes?.img2?.data?.attributes?.url
+                                            "https://api.pierrette-essentielle.com/" + product.attributes?.img2?.data?.attributes?.url
                                         }/>
                                     </div>
                                     <div className="lg:ml-8 md:ml-6 md:mt-0 mt-6">
@@ -221,7 +221,7 @@ function Product() {
                                                     id="sect">
 
                                                     <button type="button"
-                                                            className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                                            className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                                                         <a href="mailto:noah.lhote56@gmail.com">Send Mail</a>
                                                     </button>
 

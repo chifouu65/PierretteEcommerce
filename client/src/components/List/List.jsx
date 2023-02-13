@@ -25,10 +25,10 @@ function List({subCats, maxPrice, sort, catId}) {
                             title={item.attributes.title}
                             desc={item.attributes.desc}
                             img={
-                                "http://31.220.61.192" + item.attributes?.img?.data?.attributes?.url
+                                "https://api.pierrette-essentielle.com/" + item.attributes?.img?.data?.attributes?.url
                             }
                             img2={
-                                "http://31.220.61.192" + item.attributes?.img2?.data?.attributes?.url
+                                "https://api.pierrette-essentielle.com/" + item.attributes?.img2?.data?.attributes?.url
                             }
                             price={item.attributes.price}
                             isNew={item.attributes.isNew}

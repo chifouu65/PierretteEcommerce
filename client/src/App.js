@@ -18,7 +18,7 @@ import Contact from "./pages/Contact/Contact";
 
 const Layout = () => {
     return (
-        <div className={'flex flex-col justify-between h-screen'}>
+        <div className={'h-screen'}>
             <Navbar/>
             <Outlet/>
             <Footer/>
@@ -53,11 +53,11 @@ const router = createBrowserRouter([
                 element: <About/>
             },
             {
-                path: '/success=true',
+                path: '/payement/true',
                 element: <Succes/>
             },
             {
-                path: '/success=false',
+                path: '/payement/false',
                 element: <Error/>
             },
             {

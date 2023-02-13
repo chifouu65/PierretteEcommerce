@@ -34,9 +34,9 @@ function Products() {
 
     React.useEffect(() => {
         if (catId === 1) {
-            setIsPage("Produits Pierrette")
+            setIsPage("Produits Astrologie")
         } else {
-            setIsPage("Astrologie")
+            setIsPage("Produits Pierrette")
         }
     }, [catId])
 
@@ -44,14 +44,13 @@ function Products() {
         <div className="products container mx-auto pt-4">
             <h1 className='text-center lg:text-3xl text-2xl font-semibold my-4'>{isPage}</h1>
 
-
             <div className="left pt-4 flex flex-col">
 
-                    <div className=" flex flex-col container md:max-w-sm items-center justify-center pb-6">
+                    <div className=" container md:max-w-sm pb-6">
                         <div className="p-6 bg-gray-100 mx-4 rounded-lg">
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 <Link to={catId === 1 ? '/products/2' : '/products/1'}>
-                                    {catId === 1 ? '> Aller vers les produits Astrologie' : '> Aller vers les produits Pierrette'}
+                                    {catId === 1 ? '> Aller vers les produits Pierrette' : '> Aller vers les produits Astrologie'}
                                 </Link>
                             </button>
                             <div className="filterItem py-4 px-4">
@@ -68,7 +67,7 @@ function Products() {
                             <div className="filterItem max-w-lg">
                                 <div className="inputItem">
                                     <label htmlFor="steps-range"
-                                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                           className="block mb-2 text-sm font-medium text-gray-900 ">
                                         {`Price: ${maxPrice}€`}
                                     </label>
                                     <input
@@ -81,7 +80,7 @@ function Products() {
                                         )}
                                         value={maxPrice}
                                         step="1"
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
+                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"/>
                                 </div>
                             </div>
                         </div>

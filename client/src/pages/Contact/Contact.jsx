@@ -2,9 +2,9 @@ import {FaFacebook} from "react-icons/fa";
 
 function Contact() {
     return (
-        <div className="container mt-6 pt-6 mx-auto">
+        <div className="container mx-auto min-h-screen lg:pt-32 pt-12">
 
-            <section className="mb-32 text-gray-800">
+            <section className="text-gray-800">
                 <div className="flex justify-center">
                     <div className="text-center lg:max-w-3xl md:max-w-xl">
                         <h2 className="text-3xl font-bold mb-12 px-6">Contactez nous</h2>

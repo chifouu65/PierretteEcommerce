@@ -5,7 +5,7 @@ import {FaFacebook} from "react-icons/fa";
 import {MdGroups} from "react-icons/md";
 function About() {
     return (
-        <div className="container px-6 mx-auto mt-6 mb-4">
+        <div className="container px-6 mx-auto mt-6 mb-4 ">
 
             <section className="ext-gray-800">
 

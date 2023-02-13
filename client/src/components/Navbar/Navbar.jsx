@@ -35,13 +35,22 @@ function Navbar() {
         },
         {
             name: 'Boutique',
-            url: '/products/1',
+            url: '/products/2',
             current: false
         },
     ]
 
-    const selectStyle = 'flex flex-row justify-center items-center py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
-    const linkStyle = "flex flex-row justify-center items-center py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-200 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+    React.useEffect(() => {
+        if(isOpen) {
+            setTimeout(() => {
+                setIsOpen(false)
+            } , 10000)
+        }
+    }, [isOpen])
+
+
+    const selectStyle = 'flex flex-row justify-center items-center py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0'
+    const linkStyle = "flex flex-row justify-center items-center py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-200 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
 
     const [isOpenUser, setIsOpenUser] = React.useState(false)
     const toggleUserPopUp = () => {
@@ -75,7 +84,7 @@ function Navbar() {
                 }
             </>
             <nav
-                className="z-50 bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+                className="z-50 bg-white px-2 sm:px-4 py-2.5  w-full z-20 top-0 left-0 border-b border-gray-200 ">
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
                     <Link to={'/'} className="flex items-center">
                         <img
@@ -83,10 +92,10 @@ function Navbar() {
                             alt="logo"
                             className="w-10 h-10"
                         />
-                        <h2 className="lg:hidden block text-base font-bold text-gray-800 dark:text-white">
+                        <h2 className="lg:hidden block text-base font-bold text-gray-800">
                             Pierrette
                         </h2>
-                        <h2 className="hidden lg:block text-lg font-bold text-gray-800 dark:text-white">
+                        <h2 className="hidden lg:block text-lg font-bold text-gray-800">
                             Pierrette Essentielle
                         </h2>
                     </Link>
@@ -94,7 +103,7 @@ function Navbar() {
                         <button
                             onClick={toggle}
                             data-collapse-toggle="navbar-sticky" type="button"
-                            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                             aria-controls="navbar-sticky" aria-expanded="false">
                             <span className="sr-only">Open main menu</span>
                             <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -109,7 +118,7 @@ function Navbar() {
                         isOpen ? "items-center justify-between w-full md:flex md:w-auto md:order-1" : "md:flex md:w-auto md:order-1 hidden"
                     }
                          id="navbar-sticky">
-                        <ul className="flex flex-col  p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <ul className="flex flex-col  p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                             {
                                 NavigationLinks.map((link, index) => (
                                     <li key={index} onClick={
