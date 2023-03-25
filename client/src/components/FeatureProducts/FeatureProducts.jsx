@@ -9,6 +9,11 @@ function FeatureProducts({type}) {
         `/products?populate=*&[filters][type][$eq]=${type}`
     );
 
+    const maxProducts = 3
+    if (data && data.length > maxProducts) {
+        data.length = maxProducts
+    }
+
     return (
         <div>
             {loading && <Spinner/>}
@@ -37,7 +42,8 @@ function FeatureProducts({type}) {
                                     />
                                 )
                             }
-                        )}
+                        )
+                        }
                     </div>
                 )
             }

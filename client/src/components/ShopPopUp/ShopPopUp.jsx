@@ -15,7 +15,7 @@ function ShopPopUp({show, danger, text, btnoff}) {
                         <div className="p-6 text-center items-center flex justify-center flex-col">
                             <img src={require("../../assets/ShoppingAdd.gif")} width={100} height={100}/>
                             <h3 className={
-                                !danger ? "text-gray-700 text-2xl font-semibold " : "text-red-600 dark:text-red-400 text-2xl font-semibold "
+                                !danger ? "text-gray-700 text-2xl font-semibold " : "text-red-600 text-2xl font-semibold "
                             }>
                                 {text}
                             </h3>
@@ -25,7 +25,7 @@ function ShopPopUp({show, danger, text, btnoff}) {
                                         <button
 
                                             data-modal-hide="popup-modal" type="button"
-                                            className={!danger ? "text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" : "text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"}>
+                                            className={!danger ? "text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" : "text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"}>
                                             Yes, I'm sure
                                         </button>
                                         <button data-modal-hide="popup-modal" type="button"

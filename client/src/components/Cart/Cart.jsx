@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import {loadStripe} from "@stripe/stripe-js";
 import {makeRequest} from "../../MakeReqest";
+import PrdActions from "../ProductAction/PrdActions";
 
 export default function Cart({open, setOpen}) {
     const products = useSelector((state) => state.cart.products);
@@ -71,10 +72,10 @@ export default function Cart({open, setOpen}) {
                 <Dialog as="div" className="relative z-50" onClose={setOpen}>
                     <Transition.Child
                         as={Fragment}
-                        enter="ease-in-out duration-500"
+                        enter="ease-in-out duration-300"
                         enterFrom="opacity-0"
                         enterTo="opacity-100"
-                        leave="ease-in-out duration-500"
+                        leave="ease-in-out duration-300"
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
@@ -86,14 +87,14 @@ export default function Cart({open, setOpen}) {
                             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                                 <Transition.Child
                                     as={Fragment}
-                                    enter="transform transition ease-in-out duration-500 sm:duration-700"
+                                    enter="transform transition ease-in-out duration-300 sm:duration-300"
                                     enterFrom="translate-x-full"
                                     enterTo="translate-x-0"
-                                    leave="transform transition ease-in-out duration-500 sm:duration-700"
+                                    leave="transform transition ease-in-out duration-300 sm:duration-300"
                                     leaveFrom="translate-x-0"
                                     leaveTo="translate-x-full"
                                 >
-                                    <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                                    <Dialog.Panel className="pointer-events-auto w-screen max-w-2xl">
                                         <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                             <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                                                 <div className="flex items-start justify-between">
@@ -112,65 +113,45 @@ export default function Cart({open, setOpen}) {
 
                                                 <div className="mt-8">
                                                     <div className="flow-root">
-                                                        <ul className="-my-6 divide-y divide-gray-200">
-                                                            {products.map((product) => (
-                                                                <li key={product.id} className="flex py-6">
-                                                                    <div
-                                                                        className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                                        <img
-                                                                            src={
-                                                                                "http://31.220.61.192"  + product.img
+                                                        <ul className="-my-6 divide-y divide-gray-200 ">
+                                                            {
+                                                                products.map((product) => (
+                                                                    <>
+                                                                        <PrdActions
+                                                                            key={product.id}
+                                                                            name={product.title}
+                                                                            price={(product.price * product.quantity).toFixed(2)}
+                                                                            quantity={product.quantity}
+                                                                            img={
+                                                                                "https://api.pierrette-essentielle.com/" + product.img
                                                                             }
-                                                                            alt={product.title}
-                                                                            className="h-full w-full object-cover object-center"
-                                                                        />
-                                                                    </div>
-
-                                                                    <div className="ml-4 flex flex-1 flex-col">
-                                                                        <div>
-                                                                            <div
-                                                                                className="flex justify-between text-base font-medium text-gray-900">
-                                                                                <div className="flex flex-col">
-                                                                                    <h3>
-                                                                                        {product.title}
-                                                                                    </h3>
-                                                                                    <p className="mt-1 text-sm text-gray-500">{
-                                                                                        product.desc && product.desc.length > 50 ? product.desc.slice(0, 50) + "..." : product.desc
-                                                                                    }</p>
-                                                                                </div>
-                                                                                <p className="ml-4">{
-                                                                                    (product.price * product.quantity).toFixed(2)
-                                                                                }€</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            className="flex flex-1 items-end justify-between text-sm items-center">
-                                                                            <p className="text-gray-500">Quantité: {product.quantity}</p>
-                                                                            <span
-                                                                                className="text-gray-500 flex flex-row items-center gap-0.5 text-lg justify-center">
-                                                                                <button
-                                                                                    onClick={() => dispatch(removeItem({
-                                                                                        id: product.id,
-                                                                                        quantity: product.quantity
-                                                                                    }))}
-                                                                                >
-                                                                                    <AiOutlineMinusCircle/>
-                                                                                </button>
-                                                                                <br/>
-                                                                                <button onClick={() =>
+                                                                            incr={
+                                                                                () => dispatch(removeItem({
+                                                                                    id: product.id,
+                                                                                    quantity: product.quantity
+                                                                                }))
+                                                                            }
+                                                                            decr={
+                                                                                () =>
                                                                                     dispatch(addToCart({
                                                                                             id: product.id,
                                                                                             quantity: 1
                                                                                         })
                                                                                     )
-                                                                                }>
-                                                                                    <AiOutlinePlusCircle/>
-                                                                                </button>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            ))}
+                                                                            }
+                                                                            remove={
+                                                                                () => dispatch(resetCart({
+                                                                                    id: product.id,
+                                                                                    quantity: product.quantity
+                                                                                }))
+                                                                            }
+                                                                        />
+
+                                                                        <br/>
+                                                                    </>
+
+                                                                ))
+                                                            }
                                                         </ul>
                                                     </div>
                                                 </div>

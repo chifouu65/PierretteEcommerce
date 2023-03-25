@@ -1,9 +1,9 @@
 import productPhoto from '../../assets/product_photo.jpg';
 function Header (){
     return (
-        <section className="bg-white ">
+        <section className={'container'}>
             <div
-                className="gap-8 lg:gap-24 items-center px-4 mx-auto min-h-screen flex flex-col justify-center pb-16">
+                className="gap-8 items-center px-4 mx-auto min-h-screen flex flex-col justify-center pb-16">
                 <div className="font-light text-gray-500 sm:text-lg max-w-4xl">
                     <h2 className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 ">
                         <span className="block">Bienvenue chez Pierrette Essentielle,</span>

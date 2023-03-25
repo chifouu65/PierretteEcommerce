@@ -4,6 +4,7 @@ import {AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
 import UserPopUp from "../UserPopUp/UserPopUp";
 import Cart from "../Cart/Cart";
 import logo from '../../assets/logo.png'
+
 function Navbar() {
 
     const [isOpen, setIsOpen] = React.useState(false)
@@ -24,6 +25,11 @@ function Navbar() {
             current: true
         },
         {
+            name: 'Boutique',
+            url: '/products/2',
+            current: false
+        },
+        {
             name: 'A propos',
             url: '/about',
             current: false
@@ -33,21 +39,7 @@ function Navbar() {
             url: '/contact',
             current: false
         },
-        {
-            name: 'Boutique',
-            url: '/products/2',
-            current: false
-        },
     ]
-
-    React.useEffect(() => {
-        if(isOpen) {
-            setTimeout(() => {
-                setIsOpen(false)
-            } , 10000)
-        }
-    }, [isOpen])
-
 
     const selectStyle = 'flex flex-row justify-center items-center py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0'
     const linkStyle = "flex flex-row justify-center items-center py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-200 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
@@ -76,6 +68,7 @@ function Navbar() {
             <>
                 <Cart open={open} setOpen={toggleCart}/>
             </>
+            {/*
             <>
                 {
                     isOpenUser && (
@@ -83,9 +76,19 @@ function Navbar() {
                     )
                 }
             </>
+            */}
             <nav
-                className="z-50 bg-white px-2 sm:px-4 py-2.5  w-full z-20 top-0 left-0 border-b border-gray-200 ">
-                <div className="container flex flex-wrap items-center justify-between mx-auto">
+                className=
+                    "z-50 bg-white md:bg-opacity-50 px-2 sm:px-4 py-2.5
+                     w-full fixed top-0 left-0 right-0
+                     ">
+                <div className="
+                flex
+                flex-wrap
+                items-center
+                justify-between
+                md:justify-evenly
+                 ">
                     <Link to={'/'} className="flex items-center">
                         <img
                             src={logo}
@@ -99,7 +102,7 @@ function Navbar() {
                             Pierrette Essentielle
                         </h2>
                     </Link>
-                    <div className="flex md:order-2">
+                    <div className="flex md:order-2 ">
                         <button
                             onClick={toggle}
                             data-collapse-toggle="navbar-sticky" type="button"
@@ -118,7 +121,7 @@ function Navbar() {
                         isOpen ? "items-center justify-between w-full md:flex md:w-auto md:order-1" : "md:flex md:w-auto md:order-1 hidden"
                     }
                          id="navbar-sticky">
-                        <ul className="flex flex-col  p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                        <ul className="flex flex-col  p-4 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium ">
                             {
                                 NavigationLinks.map((link, index) => (
                                     <li key={index} onClick={
@@ -148,20 +151,18 @@ function Navbar() {
                                     <AiOutlineShoppingCart/> Panier
                                 </button>
                             </li>
-                            <li className={
-                                linkStyle
-                            }>
-                                <button
-                                    onClick={toggleUserPopUp}
-                                    className="flex flex-row justify-center items-center gap-2"
-                                >
-                                    <AiOutlineUser/> Profil
-                                </button>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            {
+                isOpen &&
+                <div
+                    onClick={toggle}
+                    className="md:hidden
+                h-full w-full bg-black fixed top-0 left-0 right-0 z-40 opacity-50
+                "/>
+            }
         </>
     )
 }
