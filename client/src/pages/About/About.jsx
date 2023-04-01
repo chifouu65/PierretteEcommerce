@@ -140,14 +140,11 @@ function About() {
                         </div>
 
                         <div className={"hidden lg:block"}>
-                            <ImageSlider
-                                img={
-                                    estellePhoto
-                                }
-                                img2={
-                                    productPhoto
-                                }
-                            />
+                            <img src={estellePhoto} alt="Estelle"
+                            className="rounded-lg shadow-lg
+                            w-96 h-96 object-cover
+                            "/>
+
                         </div>
                     </div>
                 </div>
