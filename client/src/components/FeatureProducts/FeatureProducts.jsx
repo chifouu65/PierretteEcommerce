@@ -2,7 +2,6 @@ import useFetch from "../../hooks/useFectch";
 import Spinner from "../Spinner/Spinner";
 import Card from "../Card/Card";
 
-
 function FeatureProducts({type}) {
 
     const {data, loading, error} = useFetch(
@@ -20,7 +19,7 @@ function FeatureProducts({type}) {
             {error && <p className='text-center text-2xl text-red-500 font-semibold my-4'>{error.message}</p>}
             {
                 data && data.length > 0 && (
-                    <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'}>
+                    <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center items-center'}>
                         {data.map((product, index) => {
                                 return (
                                     <Card

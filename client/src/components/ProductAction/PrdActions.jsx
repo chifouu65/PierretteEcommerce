@@ -22,13 +22,6 @@ function PrdActions({img, name, quantity, price, incr, decr, remove}) {
                 </thead>
                 <tbody>
                 <tr className="bg-white border-b ">
-                    <td className="w-32 p-4">
-                        <img
-                            className={"w-20 h-20 object-cover rounded"}
-                            src={
-                            img
-                        } alt={name}/>
-                    </td>
                     <td className="px-6 py-4 font-semibold text-gray-900 ">
                         {name}
                     </td>

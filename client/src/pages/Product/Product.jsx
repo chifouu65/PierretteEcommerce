@@ -61,16 +61,21 @@ function Product() {
                         product ?
                             <>
                                 <div className="
+                                 mt-20
+                                 min-h-screen
                                  max-w-7xl mx-auto
-                                 mt-20 2xl:px-20 px-6 py-6 flex flex-col items-center">
-                                    <div className={'w-full h-full max-w-lg'}>
+                                 2xl:px-20 px-6 flex 
+                                 md:flex-row flex-col 
+                                items-center md:items-start
+                                 ">
+                                    <div className={'w-full max-w-lg md:pt-8'}>
                                         <ImageSlider img={
                                             "https://api.pierrette-essentielle.com/" + product.attributes?.img?.data?.attributes?.url
                                         } img2={
                                             "https://api.pierrette-essentielle.com/" + product.attributes?.img2?.data?.attributes?.url
                                         }/>
                                     </div>
-                                    <div className="lg:ml-8 md:ml-6 md:mt-0 mt-6">
+                                    <div className="md:ml-6 md:mt-0 mt-6 max-w-sm">
                                         <div className="border-b border-gray-200 pb-6">
                                             <ul className="text-sm leading-none text-gray-600 flex flex-row gap-2 align-items">
                                                 {
@@ -104,14 +109,19 @@ function Product() {
                                             </h1>
                                             {
                                                 product.attributes?.solde ? (
-                                                    <div className="flex flex-row pt-2 gap-2 items-center">
-                                                        <span className="text-gray-600 text-sm">
-                                                              {product.attributes?.title} à {product.attributes?.price} € au lieu de
-                                                        </span>
-                                                        <span className="text-gray-600 text-sm line-through">
-                                                            {product.attributes?.solde} €
-                                                        </span>
-                                                    </div>
+                                                        <p className="text-gray-600 text-sm">
+                                                              {product.attributes?.title} à 
+                                                              <span className="text-red-600 font-semibold">
+                                                                    {' '}{product.attributes?.price} €
+                                                                </span>
+                                                               € au lieu de 
+                                                              {' '}
+                                                              <span className="text-gray-400 line-through">
+                                                                    {
+                                                                        product.attributes?.solde
+                                                                    } €
+                                                              </span>
+                                                        </p>
                                                 ) : (
                                                     null
                                                 )
@@ -165,7 +175,7 @@ function Product() {
                                             }
                                             }
                                             className="
-                                                w-full flex items-center justify-between mt-4 bg-gray-800 text-white py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 hover:bg-gray-700
+                                            mt-6 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
                                             "
                                         >
                                             <span
@@ -180,7 +190,7 @@ function Product() {
                                             }
                                         </button>
                                         <div>
-                                            <p className="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600 mt-7">
+                                            <p className="text-base lg:leading-tight leading-normal text-gray-600 mt-4">
                                                 <span className="font-semibold">Description :<br/></span>
                                                 {product.attributes?.desc}
                                             </p>
@@ -189,13 +199,15 @@ function Product() {
                                             <div className="border-b py-4 border-gray-200">
                                                 <div onClick={() => setShow2(!show2)}
                                                      className="flex justify-between items-center cursor-pointer">
-                                                    <p className="text-base leading-4 text-gray-800">Contact us</p>
+                                                    <p className="text-base leading-4 text-gray-800">
+                                                        Nous contacter
+                                                    </p>
                                                     <button
                                                         className="
-									cursor-pointer
-									focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400
-									rounded
-								"
+                                                            cursor-pointer
+                                                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400
+                                                            rounded
+                                                        "
                                                         aria-label="show or hide"
                                                     >
                                                         <svg
@@ -208,11 +220,11 @@ function Product() {
                                                     </button>
                                                 </div>
                                                 <div
-                                                    className={"pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 " + (show2 ? "block" : "hidden")}
+                                                    className={"pt-4 text-base leading-normal pr-12 text-gray-600 " + (show2 ? "block" : "hidden")}
                                                     id="sect">
 
                                                     <button type="button"
-                                                            className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                                            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                                                         <a href="mailto:es@pierrette-essentielle.com">Send Mail</a>
                                                     </button>
 

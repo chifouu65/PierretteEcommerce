@@ -28,13 +28,14 @@ export default function NavToTop(reset) {
         <div className='
             fixed bottom-5 right-0 mr-4 mb-4
         '>
-            <BiArrowToTop
-                className="scrollTop
-                    h-10 w-10
-                "
-                onClick={scrollTop}
-                style={{ height: 80, display: showScroll ? "flex" : "none" }}
-            />
+            <div className=' 
+                bg-gray-800 rounded-full p-2 
+                hover:bg-gray-700 cursor-pointer
+            ' onClick={scrollTop}>
+                <BiArrowToTop className='
+                    text-white text-2xl
+                ' />
+            </div>
         </div>
     );
 }
