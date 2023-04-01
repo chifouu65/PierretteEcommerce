@@ -7,9 +7,6 @@ function PrdActions({img, name, quantity, price, incr, decr, remove}) {
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                 <tr>
                     <th scope="col" className="px-6 py-3">
-                        <span className="sr-only">Image</span>
-                    </th>
-                    <th scope="col" className="px-6 py-3">
                         Produit
                     </th>
                     <th scope="col" className="px-6 py-3">

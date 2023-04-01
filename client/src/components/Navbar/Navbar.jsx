@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import {AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
-import UserPopUp from "../UserPopUp/UserPopUp";
 import Cart from "../Cart/Cart";
 import logo from '../../assets/logo.png'
 
@@ -68,20 +67,10 @@ function Navbar() {
             <>
                 <Cart open={open} setOpen={toggleCart}/>
             </>
-            {/*
             <>
-                {
-                    isOpenUser && (
-                        <UserPopUp toggleUserPopUp={toggleUserPopUp}/>
-                    )
-                }
-            </>
-            */}
             <nav
-                className=
-                    "z-50 bg-white md:bg-opacity-50 px-2 sm:px-4 py-2.5
-                     w-full fixed top-0 left-0 right-0
-                     ">
+                className="z-50 bg-white md:bg-opacity-50 px-2 sm:px-4 py-2.5
+                     w-full fixed top-0 left-0 right-0">
                 <div className="
                 flex
                 flex-wrap
@@ -155,6 +144,7 @@ function Navbar() {
                     </div>
                 </div>
             </nav>
+            </>
             {
                 isOpen &&
                 <div
