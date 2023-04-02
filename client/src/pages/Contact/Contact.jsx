@@ -1,8 +1,7 @@
-import {FaFacebook} from "react-icons/fa";
 
 function Contact() {
     return (
-        <div className="container mx-auto min-h-screen lg:pt-32  mt-20">
+        <div className="container mx-auto min-h-screen pt-20">
 
             <section className="text-gray-800">
                 <div className="flex justify-center">

@@ -12,10 +12,12 @@ function Card({title, desc, img, img2, price, isNew, id, category, solde}) {
                 src={img}
                 alt="..."
             />
-            <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            <div className="p-5 ">
+                <Link  to={
+                    '/product/' + id
+                } className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                     {title}
-                </h5>
+                </Link>
                 <p className="mb-3 font-normal text-gray-700 ">
                     {desc && desc.length > 40 ? desc.substring(0, 40) + '...' : desc}
                     <br/>
