@@ -100,11 +100,9 @@ function Products() {
                             </Link>
                         </div>
                     </div>
-
                 </div>
-
                 <br/>
-                <div className="right min-h-max">
+                <div className="right min-h-max ">
                     {loading ? <Spinner/> :
                         <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCategory}/>
                     }

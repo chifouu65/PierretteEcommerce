@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import {addToCart} from "../../redux/cartReducer";
 import ShopPopUp from "../../components/ShopPopUp/ShopPopUp";
 import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai";
-
+import Disclosure from "../../components/Disclosure/Disclosure";
 function Product() {
     const [show, setShow] = useState(true);
     const [show2, setShow2] = useState(true);
@@ -61,12 +61,8 @@ function Product() {
                         product ?
                             <>
                                 <div className="
-                                 mt-20
-                                 min-h-screen
-                                 max-w-7xl mx-auto
-                                 2xl:px-20 px-6 flex 
-                                 md:flex-row flex-col 
-                                items-center md:items-start
+                                 container px-6 mx-auto pt-20 mb-4 min-h-screen flex justify-center  
+                                 flex-col md:flex-row items-center md:items-start
                                  ">
                                     <div className={'w-full max-w-lg md:pt-8'}>
                                         <ImageSlider img={
@@ -76,7 +72,7 @@ function Product() {
                                         }/>
                                     </div>
                                     <div className="md:ml-6 md:mt-0 mt-6 max-w-sm">
-                                        <div className="border-b border-gray-200 pb-6">
+                                        <div className="border-b border-gray-200 pb-2">
                                             <ul className="text-sm leading-none text-gray-600 flex flex-row gap-2 align-items">
                                                 {
                                                 product?.attributes.sub_categories?.data?.map((sub_category, index) => {
@@ -128,7 +124,7 @@ function Product() {
                                             }
                                         </div>
                                         <div
-                                            className="pt-4 lex items-center justify-between">
+                                            className="pt-2 flex items-center justify-between">
                                             <div className="flex items-center">
                                                 <div className="flex flex-col gap-2">
                                                     <span className="text-gray-600 text-sm">Quantité</span>
@@ -150,7 +146,7 @@ function Product() {
                                                         <button
                                                             onClick={() => {
                                                                 setQuantity(quantity + 1)
-                                                            }
+                                                                }
                                                             }
                                                             className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
                                                             <AiOutlinePlusCircle
@@ -179,57 +175,50 @@ function Product() {
                                             "
                                         >
                                             <span
-                                                className="mr-2 font-semibold items-center flex flex-row gap-2">Ajouter au panier <AiOutlineShoppingCart
-                                                className="mr-2 "/></span>
+                                                className="mr-2 font-semibold items-center flex flex-row gap-2">
+                                                    Ajouter au panier 
+                                                <AiOutlineShoppingCart className="mr-2 "/>
+                                                </span>
 
                                             {
                                                 product.attributes?.solde !== 0 &&
                                                     <span className="text-sm">
-                                                        {product.attributes?.price} €
+                                                        {
+                                                            product.attributes?.price * quantity
+                                                        } €
                                                     </span>
                                             }
                                         </button>
-                                        <div>
-                                            <p className="text-base lg:leading-tight leading-normal text-gray-600 mt-4">
-                                                <span className="font-semibold">Description :<br/></span>
-                                                {product.attributes?.desc}
-                                            </p>
+                                        <div className="pt-4">
+                                                <Disclosure
+                                                    booleen={false}
+                                                    title="Description ..."
+                                                    children={
+                                                        product.attributes?.desc
+                                                    }
+                                                >
+                                                  
+                                                </Disclosure>
                                         </div>
-                                        <div>
-                                            <div className="border-b py-4 border-gray-200">
-                                                <div onClick={() => setShow2(!show2)}
-                                                     className="flex justify-between items-center cursor-pointer">
-                                                    <p className="text-base leading-4 text-gray-800">
-                                                        Nous contacter
-                                                    </p>
-                                                    <button
-                                                        className="
-                                                            cursor-pointer
-                                                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400
-                                                            rounded
-                                                        "
-                                                        aria-label="show or hide"
-                                                    >
-                                                        <svg
-                                                            className={"transform " + (show2 ? "rotate-180" : "rotate-0")}
-                                                            width="10" height="6" viewBox="0 0 10 6" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M9 1L5 5L1 1" stroke="#4B5563" strokeWidth="1.25"
-                                                                  strokeLinecap="round" strokeLinejoin="round"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                <div
-                                                    className={"pt-4 text-base leading-normal pr-12 text-gray-600 " + (show2 ? "block" : "hidden")}
-                                                    id="sect">
-
-                                                    <button type="button"
-                                                            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                                                        <a target="_blank" href="mailto:es@pierrette-essentielle.com">Send Mail</a>
-                                                    </button>
-
-                                                </div>
-                                            </div>
+                                        <div className="pt-4">
+                                            <Disclosure
+                                                booleen={true}  
+                                                title="Nous contacter ..."
+                                                children={
+                                                    <div className="flex flex-col gap-2">
+                                                        <p className="text-gray-600 text-sm">
+                                                            Pour toute question, n'hésitez pas à nous contacter
+                                                        </p>
+                                                        <a
+                                                            href="mailto:es@pierrette-essentielle.com"
+                                                            className="text-blue-600 text-sm"
+                                                        >
+                                                            Mail: es@pierrette-essentielle.com
+                                                        </a>
+                                                    </div>
+                                                }
+                                            >
+                                            </Disclosure>
                                         </div>
                                     </div>
                                 </div>

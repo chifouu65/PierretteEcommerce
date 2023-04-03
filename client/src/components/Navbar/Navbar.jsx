@@ -69,8 +69,10 @@ function Navbar() {
             </>
             <>
             <nav
-                className="z-50 bg-white md:bg-opacity-50 px-2 sm:px-4 py-2.5
-                     w-full fixed top-0 left-0 right-0">
+                className="z-50 bg-white md:bg-opacity-60 px-2 sm:px-4 py-2.5
+                     w-full fixed top-0 left-0 right-0
+                     backdrop-filter backdrop-blur-lg
+                     ">
                 <div className="
                 flex
                 flex-wrap

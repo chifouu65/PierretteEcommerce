@@ -35,23 +35,32 @@ function ImageSlider (
             <div id="default-carousel"data-carousel="static" className="">
                 <div className="flex flex-col items-center">
                         <div className="
-                            relative h-96 overflow-hidden bg-gray-100 rounded-lg shadow-xl cursor-pointer
-                        "
+                            relative overflow-hidden bg-gray-100 rounded-lg shadow-xl cursor-pointer
+                            w-96 h-96 "
                         >
                             <img
                                 onClick={() => handleSlide(
                                     slides[currentSlide].id === slides.length - 1 ? 0 : slides[currentSlide].id + 1
                                 )}
                                 src={slides[currentSlide].img}
-                                className="max-w-lg
+                                className="
                                 object-cover object-center w-full h-full transition duration-500 ease-in-out transform hover:scale-105
                                 "
                                 alt="..."/>
                         </div>
+                        <div className="flex justify-center mt-4 space-x-3">
+                            {
+                                slides.map((slide) => (
+                                    <div
+                                        key={slide.id}
+                                        onClick={() => handleSlide(slide.id)}
+                                        className={`w-3 h-3 rounded-full cursor-pointer ${slide.selected ? 'bg-blue-500' : 'bg-gray-300'}`}
+                                    />
+                                ))
+                            }
+                        </div>
                 </div>
             </div>
-
-
         </>
     )
 }
