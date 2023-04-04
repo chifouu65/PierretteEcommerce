@@ -8,7 +8,9 @@ function Card({title, desc, img, img2, price, isNew, id, category, solde}) {
         <>
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <img 
-                className="object-cover object-center w-full h-56 rounded-t-lg"
+                className=" object-center w-full h-56 rounded-t-lg
+                    object-contain
+                "
                 src={img}
                 alt="..."
             />

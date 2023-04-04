@@ -17,7 +17,6 @@ import ErrorPage from "./pages/Error/ErrorPage";
 import Contact from "./pages/Contact/Contact";
 import {useEffect, useState} from "react";
 import Spinner from "./components/Spinner/Spinner";
-import {motion} from "framer-motion";
 import NavToTop from "./NavToTop";
 
 const Layout = () => {
@@ -41,7 +40,7 @@ const router = createBrowserRouter([
                 element: <Home/>
             },
             {
-                path: '/products/:id',
+                path: '/products/',
                 element: <Products/>
             },
             {

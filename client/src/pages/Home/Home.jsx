@@ -13,6 +13,21 @@ function Home() {
                     <div className="px-4
                         font-bold text-2xl text-center md:text-left pb-4
                         "
+                    >  
+                        Nos derniers produits
+                    </div>
+                    
+                    <div className="px-4">
+                        <FeatureProducts type={'pierres'}/>
+                    </div>
+                </div>
+                {/*
+
+                
+                <div className={'container mx-auto'}>
+                    <div className="px-4
+                        font-bold text-2xl text-center md:text-left pb-4
+                        "
                     >
                         Astrologie
                     </div>
@@ -21,19 +36,7 @@ function Home() {
                     </div>
                 </div>
 
-                <div className={'container mx-auto'}>
-                    <div className="px-4
-                        font-bold text-2xl text-center md:text-left pb-4
-                        "
-                    >  
-                        Pierres
-                    </div>
-                    
-                    <div className="px-4">
-                        <FeatureProducts type={'pierres'}/>
-                    </div>
-                </div>
-                {/*
+                
                          <div className={'container mx-auto'}>
                     <h2 className={'text-2xl font-bold w-full bg-green-200 flex p-4'}>
                         Autres ...

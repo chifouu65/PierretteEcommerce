@@ -36,7 +36,7 @@ function ImageSlider (
                 <div className="flex flex-col items-center">
                         <div className="
                             relative overflow-hidden bg-gray-100 rounded-lg shadow-xl cursor-pointer
-                            w-96 h-96 "
+                            w-48 md:w-80 h-full "
                         >
                             <img
                                 onClick={() => handleSlide(

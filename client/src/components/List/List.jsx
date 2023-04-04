@@ -6,7 +6,7 @@ import useFetch from "../../hooks/useFectch";
 function List({subCats, maxPrice, sort, catId}) {
 
     const {data, loading} = useFetch(
-        `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
+        `/products?populate=*&[filters][categories][id]=2${subCats.map(
             (item) => `&[filters][sub_categories][id][$eq]=${item}`
         )}&[filters][price][$lte]=${maxPrice}&sort=price`
     );

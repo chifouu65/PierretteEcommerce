@@ -14,10 +14,14 @@ function Navbar() {
     const [selected, setSelected] = React.useState(0)
 
     const toggle = () => {
-        if (isOpen) {
-            setIsOpen(false)
+        if(window.innerWidth < 768) {
+            if (isOpen) {
+                setIsOpen(false)
+            } else {
+                setIsOpen(true)
+            }
         } else {
-            setIsOpen(true)
+            setIsOpen(false)
         }
         scrollTop()
     }
@@ -30,7 +34,7 @@ function Navbar() {
         },
         {
             name: 'Boutique',
-            url: '/products/2',
+            url: '/products',
             current: false
         },
         {
@@ -85,7 +89,7 @@ function Navbar() {
                 justify-between
                 md:justify-evenly
                  ">
-                    <Link to={'/'} className="flex items-center">
+                    <div className="flex items-center">
                         <img
                             src={logo}
                             alt="logo"
@@ -97,7 +101,7 @@ function Navbar() {
                         <h2 className="hidden lg:block text-lg font-bold text-gray-800">
                             Pierrette Essentielle
                         </h2>
-                    </Link>
+                    </div>
                     <div className="flex md:order-2 ">
                         <button
                             onClick={toggle}
