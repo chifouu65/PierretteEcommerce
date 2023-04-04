@@ -92,7 +92,8 @@ function App() {
         return (
             <>
                 <RouterProvider
-                    router={router}/>
+                    router={router}
+                />
                 <NavToTop/>
             </>
         );

@@ -15,7 +15,7 @@ export default function NavToTop(reset) {
     const scrollTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
-
+    
     window.addEventListener("scroll", checkScrollTop);
 
     useEffect(() => {

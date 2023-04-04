@@ -4,7 +4,7 @@ import FeatureProducts from "../../components/FeatureProducts/FeatureProducts";
 
 function Home() {
     return (
-        <div className={'container mx-auto px-4 pt-10'}>
+        <div className={'container mx-auto px-4 pt-16 md:pt-20'}>
             <Header/>
             {/*<HomeContainer/>*/}
             <div className={'mx-auto max-w-screen-xl flex flex-col gap-4'}>

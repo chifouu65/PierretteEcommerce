@@ -6,6 +6,10 @@ import logo from '../../assets/logo.png'
 
 function Navbar() {
 
+    const scrollTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     const [isOpen, setIsOpen] = React.useState(false)
     const [selected, setSelected] = React.useState(0)
 
@@ -15,6 +19,7 @@ function Navbar() {
         } else {
             setIsOpen(true)
         }
+        scrollTop()
     }
 
     const NavigationLinks = [
