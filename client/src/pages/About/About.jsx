@@ -8,12 +8,12 @@ import Disclosure from "../../components/Disclosure/Disclosure";
 function About() {
     return (
         <div className="container px-6 mx-auto pt-20 mb-4 min-h-screen flex justify-center items-center">
-            <section className="ext-gray-800">
-                <div className="container mx-auto xl:px-32 text-center lg:text-left">
+            <section>
+                <div className="container text-gray-800 mx-auto xl:px-32 text-center lg:text-left">
                     <div className="grid lg:grid-cols-2  items-center">
                         <div className="mb-12 lg:mb-0">
                             <div
-                                className="block rounded-lg shadow-lg px-6 py-12 lg:py-6 xl:py-12 md:px-12 lg:-mr-14"
+                                className="block rounded-lg  border border-gray-300 shadow-lg px-6 py-12 lg:py-6 xl:py-12 md:px-12 lg:-mr-14"
                                 style={
                                     {
                                         background: "hsla(0, 0%, 100%, 0.55)",
@@ -63,7 +63,7 @@ function About() {
                                         }
                                     />*/}
                                     <Disclosure
-                                        booleen={false}
+                                        booleen={true}
                                         title="Pourquoi choisir Pierrette Essentielle ?"
                                         children={
                                             <>

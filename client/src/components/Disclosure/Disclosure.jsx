@@ -24,7 +24,7 @@ function Disclosure(
         }
     }, [children])
     return (
-        <section>
+        <section className="w-full">
             <details open={booleen
                 ? true : false
             }
