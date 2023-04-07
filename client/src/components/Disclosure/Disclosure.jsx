@@ -24,11 +24,11 @@ function Disclosure(
         }
     }, [children])
     return (
-        <section className="w-full">
+        <section className="max-w-sm">
             <details open={booleen
                 ? true : false
             }
-                     className="w-full bg-white p-4 rounded-xl shadow-md group mx-auto overflow-hidden transition-[max-height] duration-500
+                     className="max-w-md w-full bg-white p-4 rounded-xl shadow-md group mx-auto overflow-hidden transition-[max-height] duration-500
                      hover:bg-gray-50  border border-gray-300
                      ">
                 <summary

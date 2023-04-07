@@ -12,7 +12,8 @@ function List({subCats, maxPrice, sort, catId}) {
     );
 
     return (
-        <div className="container mx-auto w-full gap-8 flex flex-wrap justify-center md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+        <div className="container mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-0 gap-y-8
+        justify-items-center items-center 
         ">
             {
                 loading ? <Spinner/> : data?.map((item) => (
