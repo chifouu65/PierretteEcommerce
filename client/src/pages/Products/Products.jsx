@@ -29,8 +29,6 @@ function Products() {
         return (
             <div className="products container mx-auto mt-20 min-h-screen">
                 <div className="container">
-
-                    {loading ? <Spinner/> :
                     <>
                             <div className="mx-4 border flex flex-col justify-between md:rounded-md overflow-hidden">
                                 <div className="flex flex-col md:flex-row justify-center items-center w-full ">
@@ -80,7 +78,7 @@ function Products() {
                         <br/>
                         <List  maxPrice={maxPrice} sort={sort} subCats={selectedSubCategory}/>
                     </>
-                    }
+                 
                 </div>
             </div>
         )
