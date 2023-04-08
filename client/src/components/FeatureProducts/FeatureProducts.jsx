@@ -77,7 +77,6 @@ function FeatureProducts({type}) {
                                                 <div className="flex flex-row items-center justify-center w-full h-full">
                                                     {
                                                         data.map((product, index) => {
-                                                            console.log(product.attributes)
                                                             const { price, title, desc, img} = product.attributes
                                                             return (
                                                                 <div
