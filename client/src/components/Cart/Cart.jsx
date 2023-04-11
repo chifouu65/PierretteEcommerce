@@ -32,7 +32,7 @@ export default function Cart({open, setOpen}) {
     };
 
     const stripePromise = loadStripe(
-        'pk_live_51MXTDiIgdGykefkYvvoeoddWnAhwVSshBIW9XxrwSu6TwXBrYzwrNxorJ3x8cxQSgJZXTGrOTBvPEjKfacytDt2T00UICPbaoB'
+        'pk_live_ezeze'
     );
 
 
