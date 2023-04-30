@@ -32,7 +32,7 @@ export default function Cart({open, setOpen}) {
     };
 
     const stripePromise = loadStripe(
-        'pk_live_ezeze'
+        process.env.SK_KEY
     );
 
 
