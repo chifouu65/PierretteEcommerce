@@ -3,39 +3,42 @@ import {useEffect, useState} from "react";
 
 export default function NavToTop(reset) {
     const [showScroll, setShowScroll] = useState(true);
-
-    const checkScrollTop = () => {
-        if (!showScroll && window.pageYOffset > 100) {
-        setShowScroll(true);
-        } else if (showScroll && window.pageYOffset <= 100) {
-        setShowScroll(false);
-        }
-    };
-
-    const scrollTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-    
-    window.addEventListener("scroll", checkScrollTop);
+    const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
-        if (reset === true) {
-            scrollTop();
-            reset = false; // reset is a prop, so it's immutable
+        window.addEventListener('scroll', checkScrollTop)
+        return function cleanup() {
+            window.removeEventListener('scroll', checkScrollTop)
         }
-    } , [reset]);
+    }, [scrollPosition])
+
+    function checkScrollTop() {
+        if (!showScroll && window.pageYOffset > 100){
+            setShowScroll(true)
+        } else if (showScroll && window.pageYOffset <= 100){
+            setShowScroll(false)
+        }
+        setScrollPosition(window.pageYOffset);
+    }
+
+    const scrollTop = () =>{
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+
     return (
-        <div className='
-            fixed bottom-5 right-0 mr-4 mb-4
-        '>
-            <div className=' 
-                bg-gray-800 rounded-full p-2 
-                hover:bg-gray-700 cursor-pointer
-            ' onClick={scrollTop}>
-                <BiArrowToTop className='
-                    text-white text-2xl
-                ' />
+        showScroll && (
+            <div
+                onScroll={() => console.log("scrolling")}
+                className="
+                animate-bounce
+                fixed bottom-10 right-5 z-50
+                bg-gray-200 hover:bg-gray-300
+                bg-opacity-50 hover:bg-opacity-100
+                rounded-full p-2 cursor-pointer
+            " onClick={scrollTop}>
+                <BiArrowToTop/>
             </div>
-        </div>
+        )
     );
 }

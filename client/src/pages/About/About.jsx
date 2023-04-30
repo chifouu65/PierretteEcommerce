@@ -27,7 +27,7 @@ function About() {
                                 <div className="flex flex-col gap-4">
 
                                     <Disclosure
-                                        booleen={true}
+                                        booleen={false}
                                         title="à propos de nous ..."
                                         children={
                                             <>
@@ -63,7 +63,7 @@ function About() {
                                         }
                                     />*/}
                                     <Disclosure
-                                        booleen={true}
+                                        booleen={false}
                                         title="Pourquoi choisir Pierrette Essentielle ?"
                                         children={
                                             <>
@@ -126,8 +126,7 @@ function About() {
                             <img src={estellePhoto} alt="Estelle"
                             className="rounded-lg shadow-lg
                             w-96 h-96 object-cover
-                            "/>
-
+                            " loading={"lazy"}/>
                         </div>
                     </div>
                 </div>

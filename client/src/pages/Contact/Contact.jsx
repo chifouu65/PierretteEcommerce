@@ -1,9 +1,9 @@
 
 function Contact() {
     return (
-        <div className="container mx-auto min-h-screen pt-20">
+        <div className="container mx-auto min-h-screen pt-20 justify-center items-center">
 
-            <section className="text-gray-800">
+            <section className="md:pt-20 flex justify-center items-center flex-col">
                 <div className="flex justify-center">
                     <div className="text-center lg:max-w-3xl md:max-w-xl">
                         <h2 className="text-3xl font-bold mb-12 px-6">Contactez nous</h2>
